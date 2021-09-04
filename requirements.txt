@@ -1,0 +1,13 @@
+tqdm
+scipy
+colorama
+cython
+pycocotools
+visualdl >= 2.1.1
+paddleslim == 2.1.0
+shapely
+opencv-python
+scikit-learn==0.23.2
+lap
+motmetrics
+matplotlib
