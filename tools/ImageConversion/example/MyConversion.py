@@ -7,7 +7,7 @@
 @Date    ：2021/8/25 10:21 
 """
 import os
-import function.pretreatment as fup
+import tools.ImageConversion.function.pretreatment as fup
 import cv2
 import numpy as np
 

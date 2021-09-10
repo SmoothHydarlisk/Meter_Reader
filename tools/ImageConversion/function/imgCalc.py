@@ -13,8 +13,8 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
 from cv2 import imread
-
-filepath = r'G:\zzuliWorkSpace\DATASET\det\version01\dataset_det_voc\JPEGImages'  # 数据集目录
+# 替换成你的数据集目录
+filepath = r'G:\zzuliWorkSpace\DATASET\SEG\version01\dataset_seg_v1\JPEGImages'
 pathDir = os.listdir(filepath)
 
 R_channel = 0

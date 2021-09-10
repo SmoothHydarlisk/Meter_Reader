@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 """
-@Project ：Meter_reader_development 
-@File    ：mybeing_img.py
+@Project ：Meter_Reader_development 
+@File    ：tailorImg.py
 @Author  ：光溜溜的刺蛇
-@Date    ：2021/9/3 16:03 
+@Date    ：2021/9/10 20:22 
 """
 import os
 import os.path as osp
@@ -120,17 +120,17 @@ class MeterReader:
         det_results = self.detector.predict(img)
         filtered_results = self.filter_bboxes(det_results, score_threshold)
         sub_imgs = self.roi_crop(img, filtered_results)
-        sub_imgs = self.resize(sub_imgs, METER_SHAPE)
+        # sub_imgs = self.resize(sub_imgs, METER_SHAPE)
         return sub_imgs
 
 
-if __name__ == '__main__':
+def getObject():
     # 模型路径
-    det_model_dir = './MODEL/Object_det_model/'
+    det_model_dir = 'G:/zzuliWorkSpace/MODEL/DET/version1/best_model'
     # 图片路径
-    image_dir = './TestImg'
+    image_dir = 'G:/zzuliWorkSpace/MeterOverview/OUT/BILEI'
     # 保存路径
-    save_dir = './OUT'
+    save_dir = 'G:/zzuliWorkSpace/MeterOverview/digitalImg'
     # 获取模型
     meter_reader = MeterReader(det_model_dir)
     # 目标图片后缀
@@ -149,12 +149,15 @@ if __name__ == '__main__':
                     os.makedirs(save_dir + root[length:])
 
                 savePath = save_dir + root[length:] + '/'
-                img_name = file[:-4]
+
                 for idx in range(len(resImgs)):
+                    if idx == 0:
+                        continue
+                    img_name = file[:-4]
                     if idx != 0:
-                        img_name = img_name + '_' + str(idx)
+                        img_name = file[:-4] + '_' + str(idx)
                     img_name = img_name + '.png'
+                    # 保存图片
                     cv2.imwrite(savePath + img_name, resImgs[idx])
                     print(savePath + img_name + '已完成')
-
 
